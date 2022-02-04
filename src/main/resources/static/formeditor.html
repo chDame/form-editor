@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUIzer</title>
+    <script src="js/vuizer-full.bundle.min.js"></script>
+
+</head>
+<body>
+<script>
+
+Vue.component('my-menu',{ template: '<div class="dropdown">'+
+			 ' <button class="btn btn-outline-light dropdown-toggle" type="button" id="menuEditor" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">VUIzer</button>'+
+			  '<div class="dropdown-menu" aria-labelledby="menuEditor">'+
+				'<div class="dropdown-item">'+
+					'<div class="input-group">'+
+						'<span class="input-group-text"><i class="bi bi-file-earmark-code"></i></span>'+
+						'<input type="text" class="form-control" placeholder="Form name" aria-label="Formname" v-model="$store.form.name">'+
+						'<button class="btn btn-sm btn-primary" v-on:click="saveForm()">Save</button>'+
+					'</div>'+
+				'</div>'+
+				'<div class="btn-group dropend">'+
+				  '<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">'+
+					'Load '+
+				  '</button>'+
+				  '<ul class="dropdown-menu">'+
+					'<li v-for="name in names"><a class="dropdown-item" v-on:click="loadForm(name)">{{name}}</a></li>'+
+				  '</ul>'+
+				'</div>'+
+			  '</div>'+
+			'</div>',
+  data: function () {
+    return {
+      names: []
+    }
+  },
+  methods: {
+	moveContentForSave(row) {
+		row.content = row.props.content;
+		delete row.props.content;
+		for(let i=0;i<row.content.length;i++) {
+			let widget = row.content[i];
+			if (widget.type=='contentWidget') {
+				this.moveContentForSave(widget);
+			}
+		}
+	},
+	moveContentForLoad(row) {
+		row.props.content = row.content;
+		delete row.content;
+		for(let i=0;i<row.props.content.length;i++) {
+			let widget = row.props.content[i];
+			if (widget.type=='contentWidget') {
+				this.moveContentForLoad(widget);
+			}
+		}
+	},
+	prepareForSave(form) {
+		for(let i=0; i<form.content.length; i++) {
+			let row = form.content[i];
+			this.moveContentForSave(row);
+		}
+	},
+	prepareForLoad(form) {
+		for(let i=0; i<form.content.length; i++) {
+			let row = form.content[i];
+			this.moveContentForLoad(row);
+		}
+	},
+	saveForm() {
+		let clone = JSON.parse(JSON.stringify(this.$store.form));
+		this.prepareForSave(clone);
+
+		axios.post('/edition/forms', clone).then(response => {
+			this.$store.form.id = response.data.id; 
+		}).catch(error => {
+			alert(error.message); 
+		})
+	},
+	loadForm(name) {
+		axios.get('/edition/forms?name='+name).then(response => {
+			let form = response.data[0]; 
+			this.prepareForLoad(form);
+			this.$store.form.id = form.id;
+			this.$store.form.name = form.name;
+			this.$store.form.content = form.content;
+			this.$store.form.data = form.data;
+			console.log(this.$store.form);
+		}).catch(error => {
+		console.log(error);
+			alert(error.message); 
+		})
+	}
+  },
+  created: function () {
+    axios.get('/edition/forms/names').then(response => {
+		this.names = response.data; 
+	}).catch(error => {
+		alert(error.message); 
+	})
+  }
+});
+
+vuizer.builder().setRoot(document.body).setMenu('my-menu').setWidgetUrl('/edition/components.js').build();
+</script>
+
+</body>
+</html>
