@@ -1,0 +1,62 @@
+{
+	post() {
+		axios.post(this.props.httpUrl, this.props.sentData).then(response=>{
+        	this.setPath(this.props.responseData, response.data);
+        }).catch(error=>{
+        	this.setPath(this.props.errorData, error.message);
+        })
+	},
+	put() {
+		axios.put(this.props.httpUrl, this.props.sentData).then(response=>{
+        	this.setPath(this.props.responseData, response.data);
+        }).catch(error=>{
+        	this.setPath(this.props.errorData, error.message);
+        })
+	},
+	patch() {
+		axios.patch(this.props.httpUrl, this.props.sentData).then(response=>{
+        	this.setPath(this.props.responseData, response.data);
+        }).catch(error=>{
+        	this.setPath(this.props.errorData, error.message);
+        })
+	},
+	get() {
+		axios.get(this.props.httpUrl).then(response=>{
+        	this.setPath(this.props.responseData, response.data);
+        }).catch(error=>{
+        	this.setPath(this.props.errorData, error.message);
+        })
+	},
+	delete() {
+		axios.delete(this.props.httpUrl).then(response=>{
+        	this.setPath(this.props.responseData, response.data);
+        }).catch(error=>{
+        	this.setPath(this.props.errorData, error.message);
+        })
+	},
+	openModal() {
+		modalService.open(this.props.modalId);
+	},
+	closeModal() {
+		modalService.close();
+	},
+	action() {
+		if (this.props.action=="Open Modal") {
+			this.openModal();
+		} else if (this.props.action=="Close Modal") {
+			this.closeModal();
+		} else {
+			if(this.props.httpVerb=="POST") {
+				this.post();
+			} else if(this.props.httpVerb=="PUT") {
+				this.put();
+			} else if(this.props.httpVerb=="PATCH") {
+				this.patch();
+			} else if(this.props.httpVerb=="GET") {
+				this.get();
+			} else if(this.props.httpVerb=="DELETE") {
+				this.delete();
+			}
+		}
+	}
+}

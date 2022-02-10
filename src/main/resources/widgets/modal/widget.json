@@ -1,0 +1,7 @@
+{
+	"type":"contentWidget",
+	"nature": "modal-element",
+	"display": "Modal",
+	"sizeable": false,
+	"icon": "bi bi-window"
+}

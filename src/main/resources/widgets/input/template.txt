@@ -1,0 +1,14 @@
+<div>
+	<div class='mb-3' v-if='!props.icon'>
+		<label :for='props.id' class='form-label'>{{props.label}}</label>
+		<input :id='props.id' :type='props.type' class='form-control' :placeholder='props.placeholder' v-model='props.value'></input>
+	</div>
+	<label v-if='props.icon' :for='props.id' class='form-label'>{{props.label}}</label>
+	<div v-if='props.icon' class='input-group mb-3'>
+		<span class='input-group-text'>
+			<i :class='props.icon'/>
+		</span>
+		<input :type='props.type' class='form-control' :id='props.id' :placeholder='props.placeholder' v-model='props.value'>
+	</div>
+</div>
+			

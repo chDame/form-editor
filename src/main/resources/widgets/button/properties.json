@@ -1,0 +1,66 @@
+[
+	{
+		"name":"disabled",
+		"type": "boolean",
+		"default": false
+	},
+	{
+		"name":"icon",
+		"type": "text",
+		"default": "bi bi-send"
+	},
+	{
+		"name":"label",
+		"type": "text",
+		"default": "button"
+	},
+	{
+		"name":"style",
+		"type": "list",
+		"values" : ["primary", "secondary","info","success","warning","danger"],
+		"default": "primary"
+	},
+	{
+		"name":"outlined",
+		"type": "boolean",
+		"default": false
+	},
+	{
+		"name":"action",
+		"type": "list",
+		"values" : ["HTTP","Open Modal","Close Modal"],
+		"default": "HTTP"
+	},
+	{
+		"name":"httpVerb",
+		"type": "list",
+		"values" : ["POST","PUT","GET","DELETE","PATCH"],
+		"default": "POST",
+		"condition":"field.props.action==\"HTTP\""
+	},
+	{
+		"name":"httpUrl",
+		"type": "text",
+		"condition":"field.props.action==\"HTTP\""
+	},
+	{
+		"name":"sentData",
+		"type": "binding",
+		"condition":"field.props.action==\"HTTP\" && (field.props.httpVerb==\"POST\" || field.props.httpVerb==\"PUT\" || field.props.httpVerb==\"PATCH\")"
+	},
+	{
+		"name":"responseData",
+		"type": "binding",
+		"condition":"field.props.action==\"HTTP\""
+	},
+	{
+		"name":"errorData",
+		"type": "binding",
+		"condition":"field.props.action==\"HTTP\""
+	},
+	{
+		"name":"modalId",
+		"type": "text",
+		"condition":"field.props.action==\"Open Modal\""
+	}
+]

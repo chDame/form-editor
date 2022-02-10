@@ -1,5 +1,6 @@
 package com.cda.form.compil.utils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,11 +23,12 @@ public class FormUtils {
 		
 	}
 	
-	public static String buildFullApplication(Form form) {
+	public static String buildFullApplication(Form form) throws IOException {
 		String header = buildHeader(form);
 		String template = buildVueAppTemplate(form);
 		String script =buildVueAppScript(form);
-		return "<html>"+header+"<body>"+template+script+"</body></html>";
+		String bootstrapJs = "<script src=\"/js/bootstrap-5.0.2.bundle.min.js\"></script>";
+		return "<html>"+header+"<body>"+template+script+bootstrapJs+"</body></html>";
 	}
 	
 	public static String buildHeader(Form form) {
@@ -49,7 +51,7 @@ public class FormUtils {
 		return vueStr.toString();
 	}
 	
-	public static String buildVueAppScript(Form form) {
+	public static String buildVueAppScript(Form form) throws IOException {
 		StructuredFormData formData = FormDataUtils.getStructuredData(form.getData());
 
 		StringBuilder vueScript = new StringBuilder("<script>").append(formData.getDataStore().toString())

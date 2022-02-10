@@ -1,0 +1,7 @@
+{ 
+	"type":"widget",
+	"nature": "input-element",
+	"display": "Input",
+	"sizeable": true,
+	"icon" : "bi bi-input-cursor-text"				
+}

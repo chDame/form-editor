@@ -1,0 +1,3 @@
+<button :class='[props.outlined ? "btn btn-outline-"+props.style: "btn btn-"+props.style]' @click="action()">
+	<i :class='props.icon' v-if='props.icon'></i> {{ props.label }}
+</button>

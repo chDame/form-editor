@@ -1,0 +1,17 @@
+[
+	{
+		"name":"required",
+		"type": "boolean",
+		"default": true
+	},
+	{
+		"name":"disabled",
+		"type": "boolean",
+		"default": false
+	},
+	{
+		"name":"label",
+		"type": "text",
+		"default": "label"
+	}
+]

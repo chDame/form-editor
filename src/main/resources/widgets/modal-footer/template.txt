@@ -1,0 +1,3 @@
+<div class="modal-footer">
+	<form-content :content="props.content"></form-content>
+</div>

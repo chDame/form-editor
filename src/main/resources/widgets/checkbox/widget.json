@@ -1,0 +1,7 @@
+{ 
+	"type":"widget",
+	"nature": "checkbox-element",
+	"display": "Checkbox",
+	"sizeable": true,
+	"icon" : "bi bi-check-square"				
+}

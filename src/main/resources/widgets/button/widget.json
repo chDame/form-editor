@@ -1,0 +1,7 @@
+{
+	"type":"widget",
+	"nature": "button-element",
+	"display": "Button",
+	"sizeable": true,
+	"icon": "bi bi-send"
+}

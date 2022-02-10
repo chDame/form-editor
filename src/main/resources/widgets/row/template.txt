@@ -1,0 +1,1 @@
+<div class='row'><form-content :content='props.content'></form-content></div>

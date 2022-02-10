@@ -9,6 +9,7 @@ public class WidgetStructure {
 	private boolean sizeable;
 	private String icon;
 	private String template;
+	private String methods;
 	private List<PropertyDefinition> propsDef;
 	public String getType() {
 		return type;
@@ -52,6 +53,11 @@ public class WidgetStructure {
 	public void setPropsDef(List<PropertyDefinition> propsDef) {
 		this.propsDef = propsDef;
 	}
-	
+	public String getMethods() {
+		return methods;
+	}
+	public void setMethods(String methods) {
+		this.methods = methods;
+	}
 	
 }

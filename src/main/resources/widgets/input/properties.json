@@ -1,0 +1,63 @@
+[
+	{
+		"name":"required",
+		"type": "boolean",
+		"default":true
+	},
+	{
+		"name":"disabled",
+		"type": "boolean",
+		"default":false
+	},
+	{
+		"name":"type",
+		"type": "list",
+		"values" : ["text", "number", "email", "password"],
+		"default":"text"
+	},
+	{
+		"name":"icon",
+		"type": "text",
+		"default" : "bi bi-input-cursor-text"
+	},
+	{
+		"name":"label",
+		"type": "text",
+		"default" : "label :"
+	},
+	{
+		"name":"value",
+		"type": "binding"
+	},
+	{
+		"name":"labelPosition",
+		"type": "list",
+		"values" : ["top", "left"],
+		"default": "top"
+	},
+	{
+		"name":"placeholder",
+		"type": "text",
+		"default":"placeholder"
+	},
+	{
+		"name":"min",
+		"type": "number",
+		"condition":"field.props.type==\"number\""
+	},
+	{
+		"name":"max",
+		"type": "number",
+		"condition":"field.props.type==\"number\""
+	},
+	{
+		"name":"minlength",
+		"type": "number",
+		"condition":"field.props.type!=\"number\""
+	},
+	{
+		"name":"maxlength",
+		"type": "number",
+		"condition":"field.props.type!=\"number\""
+	}
+]

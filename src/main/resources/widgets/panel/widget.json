@@ -1,0 +1,7 @@
+{
+	"type":"contentWidget",
+	"nature": "panel-element",
+	"display": "Panel",
+	"sizeable": false,
+	"icon": "rowwidget"
+}

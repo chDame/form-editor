@@ -1,0 +1,5 @@
+[{
+	"name":"title",
+	"type": "text",
+	"default":"Modal title"
+}]
