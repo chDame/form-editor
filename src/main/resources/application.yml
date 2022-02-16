@@ -1,3 +1,6 @@
+admin:
+  login: admin
+  password: admin
 spring:
   security:
     oauth2:

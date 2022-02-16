@@ -1,4 +1,4 @@
-package com.cda.form.controller;
+package com.cda.form.controller.admin;
 
 
 import java.util.Collections;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cda.form.controller.AbstractController;
 import com.cda.form.model.Form;
 import com.cda.form.service.FormService;
 

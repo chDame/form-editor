@@ -1,5 +1,6 @@
 package com.cda.form.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -34,6 +35,10 @@ public class FormService {
 	
 	public Form findByName(String name) {
 		return formRepository.findByName(name);
+	}
+
+	public Collection<Form> findByNames(Collection<String> name) {
+		return formRepository.findByNameIn(name);
 	}
 	
 	public List<String> findNames() {

@@ -1,4 +1,4 @@
-package com.cda.form.controller;
+package com.cda.form.controller.admin;
 
 
 import java.io.IOException;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cda.form.controller.AbstractController;
 import com.cda.form.edition.model.WidgetDefinitionUtils;
 import com.cda.form.exception.TechnicalException;
 import com.fasterxml.jackson.core.JsonProcessingException;

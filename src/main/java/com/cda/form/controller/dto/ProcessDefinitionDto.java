@@ -4,6 +4,7 @@ public class ProcessDefinitionDto {
     private String id;
     private String deploymentId;
     private String key;
+    private int version;
     public String getId() {
         return id;
     }
@@ -22,5 +23,11 @@ public class ProcessDefinitionDto {
     public void setKey(String key) {
         this.key = key;
     }
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
     
 }

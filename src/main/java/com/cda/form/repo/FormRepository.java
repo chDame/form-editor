@@ -1,5 +1,6 @@
 package com.cda.form.repo;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +11,8 @@ import com.cda.form.model.Form;
 public interface FormRepository extends JpaRepository<Form, Long> {
 
 	Form findByName(String name);
+	
+	Collection<Form> findByNameIn(Collection<String> name);
 
 	@Query("SELECT f.name FROM Form f ORDER BY f.name ASC") 
     List<String> findNames();
